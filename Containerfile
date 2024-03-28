@@ -1,6 +1,6 @@
 # FROM ubuntu
 # FROM ubi9/ubi-minimal:9.3-1612
-FROM registry.access.redhat.com/ubi9
+FROM registry.access.redhat.com/ubi-minimal
 ARG CONT_IMG_VER
 ENV CONT_IMG_VER=v1.0.7
 # ENV DEBIAN_FRONTEND noninteractive
