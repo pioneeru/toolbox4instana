@@ -1,6 +1,6 @@
 # FROM ubuntu
 # FROM ubi9/ubi-minimal:9.3-1612
-FROM ubi9/ubi-minimal
+FROM ubi9
 ARG CONT_IMG_VER
 ENV CONT_IMG_VER=v1.0.7
 # ENV DEBIAN_FRONTEND noninteractive
