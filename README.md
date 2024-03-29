@@ -6,38 +6,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: k8s-101
+  name: tool
   namespace: toolbox
   labels:
-    deployment: k8s-101
+    deployment: tool
 spec:
   replicas: 1
   selector:
     matchLabels:
-      deployment: k8s-101
+      deployment: tool
   template:
     metadata:
       labels:
-        deployment: k8s-101
+        deployment: tool
     spec:
-      serviceAccountName: k8s-101-role
+      serviceAccountName: tool-role
       containers:
-      - name: k8s-101
+      - name: tool
         imagePullPolicy: Always
         image: quay.io/swat/toolbox4instana:latest
-        ports:
-        - name: app
-          containerPort: 3000
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: k8s-101-role
+  name: tool-role
   namespace: toolbox
 subjects:
 - kind: ServiceAccount
-  name: k8s-101-role
-  namespace: default
+  name: tool-role
+  namespace: toolbox
 roleRef:
   kind: ClusterRole
   name: cluster-admin
@@ -46,6 +43,6 @@ roleRef:
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: k8s-101-role
+  name: tool-role
   namespace: toolbox
 ```
