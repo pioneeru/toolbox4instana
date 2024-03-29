@@ -3,17 +3,22 @@
 ## Installing tool container
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: k8s-101
   namespace: toolbox
+  labels:
+    deployment: k8s-101
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      deployment: k8s-101
   template:
     metadata:
       labels:
-        app: k8s-101
+        deployment: k8s-101
     spec:
       serviceAccountName: k8s-101-role
       containers:
