@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
 shopt -s expand_aliases
-. /opt/toolbox/bin/_cassandra.sh
+. /opt/toolbox/instana.env
 
-checkCass() {
+checkCass {
     case "$2" in
         status)
             cass nodetool status

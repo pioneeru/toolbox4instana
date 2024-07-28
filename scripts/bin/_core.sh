@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-checkCore() {
+checkCore {
     case "$2" in
         describe)
             oc instana describe core -n instana-core

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-checkUnit() {
+checkUnit {
     case "$2" in
         describe)
             oc instana describe unit -n instana-units

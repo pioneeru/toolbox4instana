@@ -1,11 +1,12 @@
 #!/usr/bin/bash
 
 shopt -s expand_aliases
+. /opt/toolbox/instana.env
+
 . /opt/toolbox/bin/_core.sh
 . /opt/toolbox/bin/_unit.sh
 . /opt/toolbox/bin/_cassandra.sh
 . /opt/toolbox/bin/_elasticsearch.sh
-. /opt/toolbox/instana.env
 
 case "$1" in
   es|elasticsearch)
