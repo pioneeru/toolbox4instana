@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+
+. /opt/instana.env
+
+check() {
+    case "$2" in
+        "es")
+            es -s -X GET "localhost:9200/_cluster/health?filter_path=status,*_shards&pretty"
+            ;;
+        *)
+            echo "Sorry not sure what to do with elasticsearch."
+            exit 1
+            ;;
+    esac 
+}
+
+case "$1" in
+  "check")
+    check()
+    ;;
+  *)
+    echo "Sorry not sure what to do."
+    exit 1
+    ;;
+esac
