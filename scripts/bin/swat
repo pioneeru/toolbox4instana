@@ -14,6 +14,12 @@ case "$1" in
   cs|cassandra)
       checkCass $@
       ;;
+  core)
+      checkCore $@
+      ;;
+  unit)
+      checkUnit $@
+      ;;
   *|help)
       echo "Usage: swat [COMPONENT] [OPTION]"
       echo "Choose component:"

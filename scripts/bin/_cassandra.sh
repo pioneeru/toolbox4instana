@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+shopt -s expand_aliases
+. /opt/toolbox/bin/_cassandra.sh
+
 checkCass() {
     case "$2" in
         status)
