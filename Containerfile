@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi9-minimal
 ARG CONT_IMG_VER
 ENV CONT_IMG_VER=v1.0.11
-COPY .bash_profile /root
+COPY .bashrc /root
 COPY scripts /opt/toolbox
 RUN microdnf install -y git tar wget vi
 RUN cd /opt/toolbox && \
