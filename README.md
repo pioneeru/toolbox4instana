@@ -3,6 +3,11 @@
 ## Installing tool container
 
 ```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: toolbox
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,7 +27,10 @@ spec:
     spec:
       serviceAccountName: tool-role
       containers:
-      - name: tool
+      - env:
+        - name: DOWNLOAD_KEY
+          values: MY_DOWNLOAD_KEY
+        name: tool
         imagePullPolicy: Always
         image: quay.io/swat/toolbox4instana:latest
 ---
