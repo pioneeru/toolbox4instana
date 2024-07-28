@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-. /opt/instana.env
+. /opt/toolbox/instana.env
 
 check() {
     case "$2" in
