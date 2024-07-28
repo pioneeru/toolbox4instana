@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
-checkCore {
+function checkCore {
     case "$2" in
         describe)
-            oc instana describe core -n instana-core
+            kubectl describe core -n instana-core
             ;;
         status)
-            oc instana get core -n instana-core
+            kubectl get core -n instana-core
             ;;
         *|help)
             echo "Usage: swat core [OPTION]"

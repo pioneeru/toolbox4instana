@@ -3,7 +3,7 @@
 shopt -s expand_aliases
 . /opt/toolbox/instana.env
 
-checkES {
+function checkES {
     case "$2" in
         cpu)
             es -s -X GET "localhost:9200/_cat/nodes?v=true&s=cpu:desc&pretty"

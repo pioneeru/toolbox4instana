@@ -1,12 +1,12 @@
 #!/usr/bin/bash
 
-checkUnit {
+function checkUnit {
     case "$2" in
         describe)
-            oc instana describe unit -n instana-units
+            kubectl describe unit -n instana-units
             ;;
         status)
-            oc instana get unit -n instana-units
+            kubectl get unit -n instana-units
             ;;
         *|help)
             echo "Usage: swat unit [OPTION]"
