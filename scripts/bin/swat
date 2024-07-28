@@ -1,25 +1,61 @@
 #!/usr/bin/bash
 
+shopt -s expand_aliases
 . /opt/toolbox/instana.env
+
+checkES() {
+    case "$3" in
+        cpu)
+            es -s -X GET "localhost:9200/_cat/nodes?v=true&s=cpu:desc&pretty"
+            ;;        
+        mem|memory|heap)
+            es -s -X GET "localhost:9200/_cat/nodes?v=true&h=name,node*,heap*&pretty"
+            ;;        
+        indices|ind)
+            es -s -X GET "localhost:9200/_cat/indices?v=true&pretty"
+            ;;
+        shards)
+            es -s -X GET "localhost:9200/_cat/shards?v=true&pretty"
+            ;;
+        status)
+            es -s -X GET "localhost:9200/_cluster/health?filter_path=status,*_shards&pretty"
+            es -s -X GET "localhost:9200/_cat/nodes?v=true&pretty"
+            es -s -X GET "localhost:9200/_nodes/stats/breaker?pretty"
+            ;;
+        *|help)
+            echo "Usage: swat check elastisearch [OPTION]"
+            echo "check Options:"
+            echo "   check es help                           - show this help"
+            echo "   check es status                         - check elasticsearch cluster status"
+            exit 1
+            ;;
+    esac 
+}
 
 check() {
     case "$2" in
-        "es")
-            es -s -X GET "localhost:9200/_cluster/health?filter_path=status,*_shards&pretty"
+        es|elasticsearch)
+            checkES $@
             ;;
-        *)
-            echo "Sorry not sure what to do with elasticsearch."
+        *|help)
+            echo "Usage: swat check [COMPONENT] [OPTION]"
+            echo "check Component:"
+            echo "   check help                           - show this help"
+            echo "   check elasticsearch (short: es)      - check elasticsearch cluster"
             exit 1
             ;;
     esac 
 }
 
 case "$1" in
-  "check")
-    check()
+  check)
+    check $@
     ;;
-  *)
-    echo "Sorry not sure what to do."
+  *|help)
+    echo "Usage: swat [COMMAND] [COMPONENT] [OPTION]"
+    echo "Commands:"
+    echo "  help         - show this help"
+    echo "  check        - to check a component"
     exit 1
     ;;
 esac
