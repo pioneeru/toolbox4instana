@@ -28,6 +28,10 @@ spec:
       serviceAccountName: tool-role
       containers:
       - env:
+        - name: INSTANA_VERSION
+          values: 275
+        - name: INSTANA_VERSION_RELEASE
+          values: 0
         - name: DOWNLOAD_KEY
           values: MY_DOWNLOAD_KEY
         name: tool
