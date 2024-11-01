@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: install-instana
+  namespace: toolbox
+spec:
+  parallelism: 1    
+  completions: 1    
+  activeDeadlineSeconds: 7200 
+  backoffLimit: 2   
+  template:         
+    metadata:
+      name: install-instana
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: tool-role
+      containers:
+      - name: install
+        image: "quay.io/swat/toolbox4instana:latest"
+        command: ["bash", "-c", "/opt/toolbox/bin/install.sh"]
+        resources:
+          limits:
+            memory: 500Mi
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        imagePullPolicy: IfNotPresent
+        volumeMounts: 
+        - name: credentials
+          mountPath: /etc/play-instana/
+          readOnly: true
+      volumes:
+        - name: credentials
+          secret:
+            secretName: toolbox
+            items:
+            - key: "credentials.env"
+              path: credentials.env
+              mode: 511

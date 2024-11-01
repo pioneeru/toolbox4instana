@@ -4,6 +4,7 @@
 . /opt/toolbox/bin/_unit.sh
 . /opt/toolbox/bin/_cassandra.sh
 . /opt/toolbox/bin/_elasticsearch.sh
+. /opt/toolbox/bin/_install.sh
 . /opt/toolbox/bin/_uninstall.sh
 
 case "$1" in
@@ -15,6 +16,9 @@ case "$1" in
       ;;
   core)
       checkCore $@
+      ;;
+  install)
+      checkInstall $@
       ;;
   uninstall)
       checkUninstall $@
