@@ -18,6 +18,9 @@ case "$1" in
   core)
       checkCore $@
       ;;
+  uninstall)
+      checkUnit $@
+      ;;
   unit)
       checkUnit $@
       ;;
@@ -28,6 +31,7 @@ case "$1" in
       echo "   cassandra (short: cs)          - check cassandra cluster"
       echo "   core                           - check core"
       echo "   elasticsearch (short: es)      - check elasticsearch cluster"
+      echo "   uninstall                      - select uninstall option"
       echo "   unit                           - check unit"
       exit 1
       ;;
