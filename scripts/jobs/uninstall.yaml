@@ -7,16 +7,17 @@ spec:
   parallelism: 1    
   completions: 1    
   activeDeadlineSeconds: 3600 
-  backoffLimit: 6   
+  backoffLimit: 3   
   template:         
     metadata:
       name: uninstall-instana
     spec:
-      restartPolicy: OnFailure 
+      restartPolicy: OnFailure
+      serviceAccountName: tool-role
       containers:
       - name: uninstall
         image: "quay.io/swat/toolbox4instana:latest"
-        command: ["cd /opt/toolbox/play-instana/ocp;./0-uninstall.sh"]
+        command: ["bash", "-c", "cd /opt/toolbox/play-instana/ocp;./0-uninstall.sh"]
         resources:
           limits:
             memory: 500Mi
@@ -28,11 +29,11 @@ spec:
         - name: credentials
           mountPath: /etc/play-instana/
           readOnly: true
-    volumes:
-      - name: credentials
-        secret:
-          secretName: toolbox
-          items:
-          - key: "credentials.env"
-            path: credentials.env
-            mode: 511
+      volumes:
+        - name: credentials
+          secret:
+            secretName: toolbox
+            items:
+            - key: "credentials.env"
+              path: credentials.env
+              mode: 511

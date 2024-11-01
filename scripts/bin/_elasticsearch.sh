@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
-shopt -s expand_aliases
-# . /opt/toolbox/instana.env
-
 function checkES {
+
+    shopt -s expand_aliases
+    . /opt/toolbox/instana.env
+
     case "$2" in
         cpu)
             es -s -X GET "localhost:9200/_cat/nodes?v=true&s=cpu:desc&pretty"

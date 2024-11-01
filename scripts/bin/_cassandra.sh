@@ -1,9 +1,10 @@
 #!/usr/bin/bash
 
-shopt -s expand_aliases
-# . /opt/toolbox/instana.env
-
 function checkCass {
+
+    shopt -s expand_aliases
+    . /opt/toolbox/instana.env
+
     case "$2" in
         status)
             cass nodetool status
