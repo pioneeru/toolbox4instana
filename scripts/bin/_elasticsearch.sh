@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 shopt -s expand_aliases
-. /opt/toolbox/instana.env
+# . /opt/toolbox/instana.env
 
 function checkES {
     case "$2" in

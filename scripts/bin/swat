@@ -1,12 +1,13 @@
 #!/usr/bin/bash
 
 shopt -s expand_aliases
-. /opt/toolbox/instana.env
+# . /opt/toolbox/instana.env
 
 . /opt/toolbox/bin/_core.sh
 . /opt/toolbox/bin/_unit.sh
 . /opt/toolbox/bin/_cassandra.sh
 . /opt/toolbox/bin/_elasticsearch.sh
+. /opt/toolbox/bin/_uninstall.sh
 
 case "$1" in
   es|elasticsearch)
@@ -19,7 +20,7 @@ case "$1" in
       checkCore $@
       ;;
   uninstall)
-      checkUnit $@
+      checkUninstall $@
       ;;
   unit)
       checkUnit $@
