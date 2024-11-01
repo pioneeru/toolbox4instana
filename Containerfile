@@ -10,7 +10,7 @@ RUN cd /opt/toolbox && \
     wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-amd64-rhel8.tar.gz && \
     tar xzvf openshift-client-linux-amd64-rhel8.tar.gz -C /usr/local/bin/ && \
     ln -s /etc/play-instana/credentials.env /opt/toolbox/play-instana/credentials.env && \
-    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
+    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash && \
     chmod -R 777 /opt/toolbox/bin
 
 ENTRYPOINT ["/opt/toolbox/bin/start.sh"]
