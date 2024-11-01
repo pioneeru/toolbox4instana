@@ -17,7 +17,7 @@ spec:
       containers:
       - name: uninstall
         image: "quay.io/swat/toolbox4instana:latest"
-        command: ["bash", "-c", "cd /opt/toolbox/play-instana/ocp;./0-uninstall.sh"]
+        command: ["bash", "-c", "/opt/toolbox/bin/uninstall.sh"]
         resources:
           limits:
             memory: 500Mi
