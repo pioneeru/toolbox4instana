@@ -69,7 +69,7 @@ stringData:
     KEY_PEM_PASSWORD=mykeypass                              # Password for the key/cert file (SAML/OIDC)
     TOKEN_SECRET=mytokensecret              # Seed for creating crypto tokens. Pick a random 12 char string
 
-    TLS_CERTIFICATE_GENERATE=NO   # Should we generate self-signed certificate or use exising tls.crt [YES/NO]
+    TLS_CERTIFICATE_GENERATE=YES   # Should we generate self-signed certificate or use exising tls.crt [YES/NO]
     TLS_CERTIFICATE_GENERATE_C="US"
     TLS_CERTIFICATE_GENERATE_ST="New York"
     TLS_CERTIFICATE_GENERATE_L="Rochester"
@@ -129,14 +129,14 @@ spec:
         - name: credentials
           mountPath: /etc/play-instana/
           readOnly: true
-    volumes:
-      - name: credentials
-        secret:
-          secretName: toolbox
-          items:
-          - key: "credentials.env"
-            path: credentials.env
-            mode: 511
+      volumes:
+        - name: credentials
+          secret:
+            secretName: toolbox
+            items:
+            - key: "credentials.env"
+              path: credentials.env
+              mode: 511
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
