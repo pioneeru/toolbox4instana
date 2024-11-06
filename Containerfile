@@ -1,10 +1,10 @@
 FROM registry.access.redhat.com/ubi9-minimal
 ARG CONT_IMG_VER
-ENV CONT_IMG_VER=v1.0.13
+ENV CONT_IMG_VER=v1.0.14
 COPY .bashrc /root
 COPY scripts/bin/swat /usr/local/bin/
 COPY scripts /opt/toolbox
-RUN microdnf install -y git tar wget vi
+RUN microdnf install -y git tar wget vi podman
 RUN cd /opt/toolbox && \
     git clone https://github.com/pioneeru/play-instana.git && \
     wget https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/openshift-client-linux-amd64-rhel8.tar.gz && \
