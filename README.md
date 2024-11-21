@@ -136,6 +136,13 @@ spec:
         name: tool
         imagePullPolicy: Always
         image: quay.io/swat/toolbox4instana:latest
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /tmp/healthy
+          initialDelaySeconds: 5
+          periodSeconds: 5
         volumeMounts: 
         - name: credentials
           mountPath: /etc/play-instana/
