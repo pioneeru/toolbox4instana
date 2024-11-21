@@ -1,9 +1,9 @@
 #!/usr/bin/bash
 
-function checkES {
+shopt -s expand_aliases
+. /opt/toolbox/instana.env
 
-    shopt -s expand_aliases
-    . /opt/toolbox/instana.env
+function checkES {
 
     case "$2" in
         cpu)
