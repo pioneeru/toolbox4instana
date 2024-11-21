@@ -11,6 +11,14 @@ metadata:
   name: toolbox
 ---
 apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: toolbox4instana
+  namespace: toolbox
+data:
+  instana-version: main
+---
+apiVersion: v1
 kind: Secret
 metadata:
   name: toolbox
@@ -117,7 +125,10 @@ spec:
       containers:
       - env:
         - name: INSTANA_VERSION
-          values: 275
+          valueFrom:
+            configMapKeyRef:
+              name: toolbox4instana
+              key: instana-version
         - name: INSTANA_VERSION_RELEASE
           values: 0
         - name: DOWNLOAD_KEY

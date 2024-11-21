@@ -36,6 +36,7 @@ case "$1" in
       echo "   cassandra (short: cs)          - check cassandra cluster"
       echo "   core                           - check core"
       echo "   elasticsearch (short: es)      - check elasticsearch cluster"
+      echo "   install                        - select install option"
       echo "   uninstall                      - select uninstall option"
       echo "   unit                           - check unit"
       exit 1

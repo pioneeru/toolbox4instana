@@ -16,6 +16,12 @@ spec:
       serviceAccountName: tool-role
       containers:
       - name: install
+        env:
+        - name: INSTANA_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: toolbox4instana
+              key: instana-version
         image: "quay.io/swat/toolbox4instana:latest"
         command: ["bash", "-c", "/opt/toolbox/bin/install.sh"]
         resources:
