@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+git -C /opt/toolbox/play-instana pull
 git -C /opt/toolbox/play-instana checkout $INSTANA_VERSION
 
 . /opt/toolbox/play-instana/artefacts.env
