@@ -6,6 +6,7 @@ shopt -s expand_aliases
 . /opt/toolbox/bin/_core.sh
 . /opt/toolbox/bin/_unit.sh
 . /opt/toolbox/bin/_cassandra.sh
+. /opt/toolbox/bin/_postgres.sh
 . /opt/toolbox/bin/_elasticsearch.sh
 . /opt/toolbox/bin/_install.sh
 . /opt/toolbox/bin/_uninstall.sh
@@ -13,6 +14,9 @@ shopt -s expand_aliases
 case "$1" in
   es|elasticsearch)
       checkES $@
+      ;;
+  pg|postgres)
+      checkPostgres $@
       ;;
   cs|cassandra)
       checkCass $@
@@ -36,6 +40,7 @@ case "$1" in
       echo "   cassandra (short: cs)          - check cassandra cluster"
       echo "   core                           - check core"
       echo "   elasticsearch (short: es)      - check elasticsearch cluster"
+      echo "   postgres (short: pg)           - check postgres"
       echo "   install                        - select install option"
       echo "   uninstall                      - select uninstall option"
       echo "   unit                           - check unit"
