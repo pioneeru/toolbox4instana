@@ -4,7 +4,7 @@ function checkPostgres {
 
     case "$2" in
         fullvacuum)
-            pgsql "vacuum full;" $3
+            pgsql "vacuum (FULL, ANALYZE, VERBOSE);" $3
             ;;
         status)
             pg pg_isready
@@ -13,7 +13,7 @@ function checkPostgres {
             pgsql "\l+"
             ;;
         vacuum)
-            pgsql "vacuum verbose;" $3
+            pgsql "vacuum (ANALYZE, VERBOSE);" $3
             ;;
         *|help)
             echo "Usage: swat postgres [OPTION]"
