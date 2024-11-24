@@ -41,23 +41,15 @@ $(</opt/toolbox/jobs/fio-perf-sequential.yaml)
 EOF
             " | kubectl apply -f -
             ;;
-        test)
-            kubectl delete job fio-perf-sequential &> /dev/null
-            RWO_STORAGECLASS=$STORAGECLASS eval "cat <<EOF
-$(</opt/toolbox/jobs/fio-perf-sequential.yaml)
-EOF
-            " | kubectl apply -f -
-            echo "used: $RWO_STORAGECLASS"
-            ;;
         *|help)
             echo "Usage: swat install [OPTION]"
             echo "unit options:"
-            echo "   fio help             - show this help"
-            echo "   fio iops             - start job to test IOPS with random read/write on storageClass: $RWO_STORAGECLASS"
-            echo "   fio iops-seq         - start job to test IOPS with sequential read on storageClass: $RWO_STORAGECLASS"
-            echo "   fio latency          - start job to test Latency with random read/write on storageClass: $RWO_STORAGECLASS"
-            echo "   fio perf             - start job to test Performance with random read/write on storageClass: $RWO_STORAGECLASS"
-            echo "   fio perf-seq         - start job to test Performance with sequential read on storageClass: $RWO_STORAGECLASS"
+            echo "   fio help [STORAGECLASS]            - show this help"
+            echo "   fio iops [STORAGECLASS]            - start job to test IOPS with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
+            echo "   fio iops-seq [STORAGECLASS]        - start job to test IOPS with sequential read on storageClass (Default: $RWO_STORAGECLASS)"
+            echo "   fio latency [STORAGECLASS]         - start job to test Latency with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
+            echo "   fio perf [STORAGECLASS]            - start job to test Performance with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
+            echo "   fio perf-seq [STORAGECLASS]        - start job to test Performance with sequential read on storageClass (Default: $RWO_STORAGECLASS)"
             exit 1
             ;;
     esac 

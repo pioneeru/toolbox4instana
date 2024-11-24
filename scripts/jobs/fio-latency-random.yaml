@@ -41,7 +41,7 @@ spec:
             spec:
               accessModes: 
               - ReadWriteOnce
-              storageClassName: $RWO_STORAGECLASS
+              storageClassName: $STORAGECLASS
               resources:
                 requests:
                   storage: 10Gi
