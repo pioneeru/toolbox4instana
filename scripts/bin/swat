@@ -2,6 +2,7 @@
 
 shopt -s expand_aliases
 . /opt/toolbox/instana.env
+. /opt/toolbox/play-instana/credentials.env
 
 . /opt/toolbox/bin/_core.sh
 . /opt/toolbox/bin/_unit.sh
