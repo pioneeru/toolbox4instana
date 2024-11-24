@@ -1,0 +1,15 @@
+[global]
+bs=256K
+iodepth=64
+direct=1
+ioengine=libaio
+group_reporting
+time_based
+runtime=120
+numjobs=4
+filesize=250m
+directory=/mnt/data
+
+[perf-test]
+name=raw-randreadwrite
+rw=randrw

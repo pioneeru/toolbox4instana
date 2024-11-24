@@ -21,6 +21,9 @@ case "$1" in
   cs|cassandra)
       checkCass $@
       ;;
+  fio)
+      cat /opt/toolbox/jobs/fio.yaml | kubectl apply -f -
+      ;;
   core)
       checkCore $@
       ;;
@@ -40,6 +43,7 @@ case "$1" in
       echo "   cassandra (short: cs)          - check cassandra cluster"
       echo "   core                           - check core"
       echo "   elasticsearch (short: es)      - check elasticsearch cluster"
+      echo "   fio                            - start fio test"
       echo "   postgres (short: pg)           - check postgres"
       echo "   install                        - select install option"
       echo "   uninstall                      - select uninstall option"
