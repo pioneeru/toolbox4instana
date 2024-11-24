@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: fio
+  name: fio-iops-sequential
   namespace: toolbox
 spec:
   parallelism: 1    
@@ -10,7 +10,7 @@ spec:
   backoffLimit: 2   
   template:         
     metadata:
-      name: fio
+      name: fio-iops-sequential
     spec:
       restartPolicy: OnFailure
       serviceAccountName: tool-role
@@ -23,7 +23,7 @@ spec:
               name: toolbox4instana
               key: instana-version
         image: "quay.io/swat/toolbox4instana:latest"
-        command: ["bash", "-c", "/opt/toolbox/bin/fio.sh"]
+        command: ["bash", "-c", "/opt/toolbox/bin/fio.sh iops-sequential-read"]
         resources:
           limits:
             memory: 500Mi

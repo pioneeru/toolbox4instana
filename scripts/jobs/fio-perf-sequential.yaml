@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fio-perf-sequential
+  namespace: toolbox
+spec:
+  parallelism: 1    
+  completions: 1    
+  activeDeadlineSeconds: 7200 
+  backoffLimit: 2   
+  template:         
+    metadata:
+      name: fio-perf-sequential
+    spec:
+      restartPolicy: OnFailure
+      serviceAccountName: tool-role
+      containers:
+      - name: fio
+        env:
+        - name: INSTANA_VERSION
+          valueFrom:
+            configMapKeyRef:
+              name: toolbox4instana
+              key: instana-version
+        image: "quay.io/swat/toolbox4instana:latest"
+        command: ["bash", "-c", "/opt/toolbox/bin/fio.sh perf-sequential-read"]
+        resources:
+          limits:
+            memory: 500Mi
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+        - name: data
+          mountPath: /mnt/data
+      volumes:
+      - name: data
+        ephemeral:
+          volumeClaimTemplate:
+            spec:
+              accessModes: 
+              - ReadWriteOnce
+              storageClassName: $RWO_STORAGECLASS
+              resources:
+                requests:
+                  storage: 10Gi

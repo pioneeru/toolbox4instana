@@ -1,3 +1,3 @@
 #!/usr/bin/bash
 
-fio /opt/toolbox/fio/iops-random-readwrite.fio
+fio /opt/toolbox/fio/$1
