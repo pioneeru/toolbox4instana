@@ -12,6 +12,6 @@ RUN cd /opt/toolbox && \
     git clone https://github.com/pioneeru/play-instana.git && \
     ln -s /etc/play-instana/credentials.env /opt/toolbox/play-instana/credentials.env && \
     chmod -R 777 /opt/toolbox/bin
-RUN cd /opt/toolbox && git clone https://github.com/axboe/fio.git && cd /opt/toolbox/fio && ./configure && make && make install && rm -rf /opt/toolbox/fio
+RUN cd /opt && git clone https://github.com/axboe/fio.git && cd /opt/fio && ./configure && make && make install && rm -rf /opt/fio
     
 ENTRYPOINT ["/opt/toolbox/bin/start.sh"]
