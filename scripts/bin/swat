@@ -9,6 +9,7 @@ shopt -s expand_aliases
 . /opt/toolbox/bin/_cassandra.sh
 . /opt/toolbox/bin/_postgres.sh
 . /opt/toolbox/bin/_elasticsearch.sh
+. /opt/toolbox/bin/_fio.sh
 . /opt/toolbox/bin/_install.sh
 . /opt/toolbox/bin/_uninstall.sh
 
@@ -23,10 +24,7 @@ case "$1" in
       checkCass $@
       ;;
   fio)
-      eval "cat <<EOF
-$(</opt/toolbox/jobs/fio.yaml)
-EOF
-" | kubectl apply -f -
+      checkFIO $@
       ;;
   core)
       checkCore $@
