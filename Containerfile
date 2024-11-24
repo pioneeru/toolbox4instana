@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi9-minimal
 ARG CONT_IMG_VER
-ENV CONT_IMG_VER=v1.0.22
+ENV CONT_IMG_VER=v1.0.23
 COPY .bashrc /root
 COPY scripts/bin/swat /usr/local/bin/
 COPY scripts /opt/toolbox
@@ -12,6 +12,6 @@ RUN cd /opt/toolbox && \
     git clone https://github.com/pioneeru/play-instana.git && \
     ln -s /etc/play-instana/credentials.env /opt/toolbox/play-instana/credentials.env && \
     chmod -R 777 /opt/toolbox/bin
-RUN git clone https://github.com/axboe/fio.git && cd /opt/toolbox/fio && ./configure && make && make install && rm -rf /opt/toolbox/fio
+RUN cd /opt/toolbox && git clone https://github.com/axboe/fio.git && cd /opt/toolbox/fio && ./configure && make && make install && rm -rf /opt/toolbox/fio
     
 ENTRYPOINT ["/opt/toolbox/bin/start.sh"]
