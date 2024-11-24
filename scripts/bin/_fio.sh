@@ -44,7 +44,7 @@ EOF
         *|help)
             echo "Usage: swat install [OPTION]"
             echo "unit options:"
-            echo "   fio help [STORAGECLASS]            - show this help"
+            echo "   fio help                           - show this help"
             echo "   fio iops [STORAGECLASS]            - start job to test IOPS with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
             echo "   fio iops-seq [STORAGECLASS]        - start job to test IOPS with sequential read on storageClass (Default: $RWO_STORAGECLASS)"
             echo "   fio latency [STORAGECLASS]         - start job to test Latency with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
