@@ -10,6 +10,7 @@ shopt -s expand_aliases
 . /opt/toolbox/bin/_postgres.sh
 . /opt/toolbox/bin/_elasticsearch.sh
 . /opt/toolbox/bin/_fio.sh
+. /opt/toolbox/bin/_kafka.sh
 . /opt/toolbox/bin/_install.sh
 . /opt/toolbox/bin/_uninstall.sh
 
@@ -25,6 +26,9 @@ case "$1" in
       ;;
   fio)
       checkFIO $@
+      ;;
+  k|kafka)
+      checkKafka $@
       ;;
   core)
       checkCore $@
@@ -46,6 +50,7 @@ case "$1" in
       echo "   core                           - check core"
       echo "   elasticsearch (short: es)      - check elasticsearch cluster"
       echo "   fio                            - start fio test"
+      echo "   kafka (short: k)               - check kafka topics"
       echo "   postgres (short: pg)           - check postgres"
       echo "   install                        - select install option"
       echo "   uninstall                      - select uninstall option"
