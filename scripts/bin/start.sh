@@ -3,6 +3,7 @@
 git -C /opt/toolbox/play-instana pull
 git -C /opt/toolbox/play-instana checkout $INSTANA_VERSION
 
+. /opt/toolbox/instana.env
 . /opt/toolbox/play-instana/artefacts.env
 . /opt/toolbox/play-instana/credentials.env
 
