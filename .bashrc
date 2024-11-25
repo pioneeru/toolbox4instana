@@ -5,7 +5,7 @@ if [ -f /etc/bashrc ]; then
         . /etc/bashrc
 fi
 
-. /opt/instana.env
+. /opt/toolbox/instana.env
 
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
