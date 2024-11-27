@@ -8,7 +8,7 @@ function checkKafka {
             ;;
         describe)
             TOPIC=""
-            if [[! -z $3 ]]; then
+            if [[ ! -z $3 ]]; then
                 TOPIC="--topic $3"
             fi
             kt --describe $TOPIC
