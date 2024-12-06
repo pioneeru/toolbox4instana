@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi9-minimal
 ARG CONT_IMG_VER
-ENV CONT_IMG_VER=v1.0.32
+ENV CONT_IMG_VER=v1.0.33
 COPY .bashrc /root
 COPY scripts/bin/swat /usr/local/bin/
 COPY scripts /opt/toolbox
@@ -16,7 +16,8 @@ RUN microdnf install -y gcc libaio zlib-devel && \
     rpm -Uhv libaio-devel-0.3.111-13.el9.x86_64.rpm && \
     git clone https://github.com/axboe/fio.git && \
     cd /opt/fio && \
-    ./configure && make && make install
+    ./configure && make && make install && \
+    rm -rf /opt/fio /opt/libaio-devel-0.3.111-13.el9.x86_64.rpm
 RUN cd /opt/toolbox && \
     git clone https://github.com/pioneeru/play-instana.git && \
     ln -s /etc/play-instana/credentials.env /opt/toolbox/play-instana/credentials.env && \
