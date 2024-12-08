@@ -27,18 +27,12 @@ stringData:
   "credentials.env": |
     KUBECTL=oc              ### Prefix for "kubectl" commands [oc/kubectl]
 
-    ### Docker HUB credentials
-    DOCKER_USERNAME=
-    DOCKER_PASSWORD=
-
-
-
     ### Instana credentials
     SALES_KEY=
     DOWNLOAD_KEY=
     INSTANA_UNIT_NAME=unit0
     INSTANA_TENANT_NAME=tenant0
-    INSTANA_BASE_DOMAIN=instana.apps.mycluster.com
+    INSTANA_BASE_DOMAIN=instana.apps.inst.cp.fyre.ibm.com
     INSTANA_TENANT_DOMAIN=${INSTANA_UNIT_NAME}-${INSTANA_TENANT_NAME}.${INSTANA_BASE_DOMAIN}
     INSTANA_AGENT_ACCEPTOR=agent-acceptor.${INSTANA_BASE_DOMAIN}
     INSTANA_OTLP_GRPC_ACCEPTOR=otlp-grpc.${INSTANA_BASE_DOMAIN}
@@ -46,6 +40,21 @@ stringData:
     INSTANA_ADMIN_USER=admin@instana.local
     INSTANA_ADMIN_PASSWORD=mypass
 
+
+    ### Docker HUB credentials
+    DOCKER_USERNAME=
+    DOCKER_PASSWORD=
+
+
+    ### Image repository
+    INSTANA_IMAGE_REGISTRY=artifact-public.instana.io
+    INSTANA_IMAGE_REGISTRY_USERNAME=_
+    INSTANA_IMAGE_REGISTRY_PASSWORD=$DOWNLOAD_KEY
+    INSTANA_OPERATOR_IMAGE_NAME=infrastructure/instana-enterprise-operator
+    INSTANA_BACKEND_IMAGE_REPOSITORY=backend
+    INSTANA_DATASTORE_IMAGE_REPOSITORY=self-hosted-images/3rd-party/datastore
+    INSTANA_DATASTORE_OPERATOR_IMAGE_REPOSITORY=self-hosted-images/3rd-party/operator
+    INSTANA_K8S_IMAGE_REPOSITORY=self-hosted-images/k8s
 
 
     ### Storage class
@@ -61,7 +70,7 @@ stringData:
 
 
     ### Datastore configs
-    BEEINSTANA_ADMIN_PASS=alkDFjsddaffcaj1bjhg
+    BEEINSTANA_ADMIN_PASS=alkDFjcn7aldhj1bjhg
 
     CLICKHOUSE_ADMIN="default"
     CLICKHOUSE_ADMIN_PASS="clickhouse-pass"
@@ -77,7 +86,7 @@ stringData:
     KEY_PEM_PASSWORD=mykeypass                              # Password for the key/cert file (SAML/OIDC)
     TOKEN_SECRET=mytokensecret              # Seed for creating crypto tokens. Pick a random 12 char string
 
-    TLS_CERTIFICATE_GENERATE=YES   # Should we generate self-signed certificate or use exising tls.crt [YES/NO]
+    TLS_CERTIFICATE_GENERATE=NO   # Should we generate self-signed certificate or use exising tls.crt [YES/NO]
     TLS_CERTIFICATE_GENERATE_C="US"
     TLS_CERTIFICATE_GENERATE_ST="New York"
     TLS_CERTIFICATE_GENERATE_L="Rochester"
