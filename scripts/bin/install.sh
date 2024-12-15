@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 git -C /opt/toolbox/play-instana pull --rebase
-git -C /opt/toolbox/play-instana checkout $INSTANA_VERSION
+git -C /opt/toolbox/play-instana checkout ${INSTANA_VERSION}
 
 . /opt/toolbox/play-instana/credentials.env
 . /opt/toolbox/play-instana/artefacts.env

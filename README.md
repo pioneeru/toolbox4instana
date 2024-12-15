@@ -100,13 +100,14 @@ stringData:
     ### File names for manifests
     MANIFEST_FILENAME_ZOOKEEPER=zookeeper.yaml
     MANIFEST_FILENAME_CLICKHOUSE=clickhouse.yaml
-    MANIFEST_FILENAME_CLICKHOUSE_SCC=clickhouse_scc.yaml
+    MANIFEST_FILENAME_CLICKHOUSE_KEEPER=clickhouse_keeper.yaml
+    MANIFEST_FILENAME_CLICKHOUSE_SCC=clickhouse_scc.yaml        # OCP 
     MANIFEST_FILENAME_KAFKA=kafka.yaml
     MANIFEST_FILENAME_ELASTICSEARCH=elasticsearch.yaml
     MANIFEST_FILENAME_POSTGRES=postgres.yaml
-    MANIFEST_FILENAME_POSTGRES_SCC=postgres-scc.yaml        # OCP 
+    MANIFEST_FILENAME_POSTGRES_SCC=postgres-scc.yaml            # OCP 
     MANIFEST_FILENAME_CASSANDRA=cassandra.yaml
-    MANIFEST_FILENAME_CASSANDRA_SCC=cassandra-scc.yaml      # OCP 
+    MANIFEST_FILENAME_CASSANDRA_SCC=cassandra-scc.yaml          # OCP 
     MANIFEST_FILENAME_BEEINSTANA=beeinstana.yaml
     MANIFEST_FILENAME_CORE=core.yaml
     MANIFEST_FILENAME_UNIT=unit.yaml
