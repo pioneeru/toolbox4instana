@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: fio-iops-random
+  name: fio-like-stanctl
   namespace: toolbox
 spec:
   parallelism: 1    
