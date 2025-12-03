@@ -6,6 +6,13 @@ function checkFIO {
        STORAGECLASS=$3
     fi
     case "$2" in
+        stanctl)
+            kubectl delete job fio-like-stanctl &> /dev/null
+            eval "cat <<EOF
+$(</opt/toolbox/jobs/fio-like-stanctl.yaml)
+EOF
+            " | kubectl apply -f -
+            ;;
         iops)
             kubectl delete job fio-iops-random &> /dev/null
             eval "cat <<EOF
@@ -45,6 +52,7 @@ EOF
             echo "Usage: swat install [OPTION]"
             echo "unit options:"
             echo "   fio help                           - show this help"
+            echo "   fio stanctl [STORAGECLASS]         - start job to test IOPS the same way stanctl does (Default: $RWO_STORAGECLASS)"
             echo "   fio iops [STORAGECLASS]            - start job to test IOPS with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
             echo "   fio iops-seq [STORAGECLASS]        - start job to test IOPS with sequential read on storageClass (Default: $RWO_STORAGECLASS)"
             echo "   fio latency [STORAGECLASS]         - start job to test Latency with random read/write on storageClass (Default: $RWO_STORAGECLASS)"
