@@ -5,6 +5,7 @@ ioengine=libaio
 direct=1
 gtod_reduce=1
 unlink=1
+directory=/mnt/data
 [job1]
 name=read_iops
 bs=4K
